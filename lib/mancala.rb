@@ -36,7 +36,7 @@ class Mancala
         end
         move_result = @board.make_move(start_pos, current_player.name) # relies on the make_move function to check if turn is over or not
       else
-        move_result = @board.make_move(move_result, current_player.name) # same
+        move_result = @board.make_move(move_result, current_player.name) # same as
       end
       break if won?
     end
