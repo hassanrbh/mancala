@@ -8,11 +8,11 @@ class Mancala
     @board = Board.new(name1, name2)
   end
 
-  def play
+  def play # play instance for (the mancala)
     puts "Welcome to Mancala"
-    @board.render
-    current_player = @player1
-    until won?
+    @board.render # render the board call (the instance variable in the board class)
+    current_player = @player1 # always the player1 play the first one then if the first player finsh the turn of the player will go otomaticly to the next player
+    until won? # if the game instance won
       take_turn(current_player)
       current_player = current_player == @player1 ? @player2 : @player1
     end
@@ -26,18 +26,17 @@ class Mancala
     until move_result == :switch
       if move_result == :prompt
         print_indices
-
         begin
-          start_pos = current_player.prompt
+          start_pos = current_player.prompt # start position at the board
           start_pos -= 1 if start_pos <= 6
           @board.valid_move?(start_pos)
         rescue Exception => e
           puts e.message
         retry
         end
-        move_result = @board.make_move(start_pos, current_player.name)
+        move_result = @board.make_move(start_pos, current_player.name) # relies on the make_move function to check if turn is over or not
       else
-        move_result = @board.make_move(move_result, current_player.name)
+        move_result = @board.make_move(move_result, current_player.name) # same
       end
       break if won?
     end

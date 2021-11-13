@@ -20,12 +20,12 @@ describe Board do
 
   describe "#initialize" do
     it "creates a set of 14 cups" do
-      expect(board.cups.class).to be(Array)
-      expect(board.cups.length).to eq(14)
+      expect(board.cups.class).to be(Array) # completed
+      expect(board.cups.length).to eq(14) # completed
     end
 
     it "fills the non-store cups with four stones" do
-      expect(board.cups[6] && board.cups[13]).to be_empty
+      expect(board.cups[6] && board.cups[13]).to be_empty # we need to +
       expect(board.cups[0..5]).to all( eq(four_stone_cup) )
     end
   end
